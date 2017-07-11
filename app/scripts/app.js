@@ -25,6 +25,11 @@
         .state('album', {
             url: '/album',
             templateUrl: '/template/album.html'
+        })
+//Implement a third state named collection for the Collection view
+        .state('collection', {
+            url: '/collection',
+            templateUrl: '/template/collection.html'
         });
   }
 
