@@ -24,11 +24,15 @@
 //If you include them, you will receive an error. Chained calls require only a single semicolon after the last call, which signifies the termination
         .state('album', {
             url: '/album',
+  //instantiate LandingCtrl controller object
+            controller: 'LandingCtrl as landing',
             templateUrl: '/template/album.html'
         })
 //Implement a third state named collection for the Collection view
         .state('collection', {
             url: '/collection',
+//Register the CollectionCtrl to the collection state
+            controller: 'CollectionCtrl as collection',
             templateUrl: '/template/collection.html'
         });
   }
