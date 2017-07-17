@@ -33,10 +33,18 @@
      };
 //Add a public getAlbum method to the service
 //This service is a "Plain Old JavaScript Object" (POJO).
-//Components that inject this service as a dependency can access the public methods of the object 
+//Components that inject this service as a dependency can access the public methods of the object
 //– that is, the properties and methods that are returned.
     Fixtures.getAlbum = function(){
         return albumPicasso;
+    };
+
+    Fixtures.getCollection = function(numberOfAlbums){
+        var collection = [];
+        for(var i = 0; i < numberOfAlbums; i++){
+        collection.push(albumPicasso);
+      }
+      return collection;
     };
 
     return Fixtures;
