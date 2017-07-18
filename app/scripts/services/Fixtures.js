@@ -16,7 +16,6 @@
          ]
      };
 
-     // Another Example Album
      var albumMarconi = {
          title: 'The Telephone',
          artist: 'Guglielmo Marconi',
@@ -31,10 +30,7 @@
              { title: 'Wrong phone number', duration: '2:15'}
          ]
      };
-//Add a public getAlbum method to the service
-//This service is a "Plain Old JavaScript Object" (POJO).
-//Components that inject this service as a dependency can access the public methods of the object
-//– that is, the properties and methods that are returned.
+
     Fixtures.getAlbum = function(){
         return albumPicasso;
     };

@@ -1,12 +1,8 @@
 <section class="album-covers container clearfix">
-//ngRepeat instantiates a template once per item from a collection
-//the collection is the albums array that we created to hold copies of albumPicasso.
-//The "album in collection.albums" part of the code is what allows us to access the data from a single item in the collection
      <div class="collection-album-container column fourth" ng-repeat="album in collection.albums track by $index">
          <img src="{{ album.albumArtUrl }}"/>
          <div class="collection-album-info caption">
              <p>
-////Update links in the navigation and throughout the templates with routing
                  <a class="album-name" ui-sref="album">{{ album.title }}</a>
                  <br/>
                  <a ui-sref="album">{{ album.artist }}</a>
