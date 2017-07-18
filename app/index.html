@@ -20,18 +20,17 @@
           <img src="assets/images/bloc_jams_logo.png" alt="bloc jams logo">
           </a>
           <div class="links-container">
-//Update links in the navigation and throughout the templates with routing
           <a ui-sref="collection" class="navbar-link">collection</a>
           </div>
      </nav>
-//ui-view directive in the global file (index.html) will load the template associated with the landing state.
      <ui-view></ui-view>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-    //UI-Router Source. To include it in an application, add its source script after the Angular source.
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.4.2/angular-ui-router.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/buzz/1.2.0/buzz.min.js"></script>
     <script src="/scripts/app.js"></script>
     <script src="/scripts/controllers/LandingCtrl.js"></script>
     <script src="/scripts/services/Fixtures.js"></script>
+    <script src="/scripts/services/SongPlayer.js"></script>
     <script src="/scripts/controllers/CollectionCtrl.js"></script>
     <script src="/scripts/controllers/AlbumCtrl.js"></script>
 </body>

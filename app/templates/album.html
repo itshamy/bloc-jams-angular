@@ -16,11 +16,12 @@
 //Update the album view template
          <td class ="song-item-number">
 //Song number show When the song is not playing and the mouse is off hover
-             <span ng-show="!playing && !hovered">{{$index + 1}}</span>
+             <span ng-show="!song.playing && !hovered">{{$index + 1}}</span>
 //Play button show When the song is not playing and the mouse is on hover
-             <a class="album-song-button" ng-show="!playing && hovered"><span class="ion-play"></span></a>
+//trigger the play method, we need to add an ngClick directive to the play button
+             <a class="album-song-button" ng-show="!song.playing && hovered" ng-click="album.songPlayer.play(song)"><span class="ion-play"></span></a>
 //Pause button show When the song is playing
-             <a class="album-song-button" ng-show="playing"><span class="ion-pause"></span></a>
+             <a class="album-song-button" ng-show="song.playing" ng-click="album.songPlayer.pause(song)"><span class="ion-pause"></span></a>
          </td>
              <td class="song-item-title">{{ song.name }}</td>
              <td class="song-item-duration">{{ song.length }}</td>
