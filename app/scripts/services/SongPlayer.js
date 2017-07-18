@@ -13,6 +13,26 @@
     }
 
     /**
+    * @function playSong
+    * @desc Play new audio file
+    * @param {Object} song
+    */
+    var playSong = function(song){
+      currentBuzzObject.play();
+      song.playing = true;
+    };
+
+    /**
+    * @function stopSong
+    * @desc Stop audio file
+    * @param {Object} song
+    */
+    var stopSong = function(song){
+      currentBuzzObject.stop();
+      SongPlayer.currentSong.playing = null;
+    };
+
+    /**
     * @desc Active song object from list of songs
     * @type {Object}
     */
@@ -37,8 +57,7 @@
     */
     var setSong = function(song){
       if (currentBuzzObject){
-        currentBuzzObject.stop();
-        currentBuzzObject.playing = null;
+        stopSong();
       }
       currentBuzzObject = new buzz.sound(song.audioUrl, {
         format: ['mp3'],
@@ -46,17 +65,6 @@
       });
       currentSong = song;
     };
-
-    /**
-    * @function playSong
-    * @desc Play new audio file
-    * @param {Object} song
-    */
-    var playSong = function(song){
-      currentBuzzObject.play();
-      song.playing = true;
-    };
-
 
     /**
     * @method SongPlayer.play
@@ -94,9 +102,26 @@
           var currentSongIndex = getSongIndex(SongPlayer.currentSong);
           currentSongIndex--;
           if (currentSongIndex < 0){
-            currentBuzzObject.stop();
-            SongPlayer.currentSong.playing = null;
+            stopSong();
           } else {
+              var song = currentAlbum.songs[currentSongIndex];
+              setSong(song);
+              playSong(song);
+          }
+      };
+
+      /**
+      * @method SongPlayer.next
+      * @desc Go to next song
+      */
+      SongPlayer.next = function(){
+        var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+        currentSongIndex++;
+        if(currentSongIndex > Object.keys(currentAlbum).length){
+          currentSongIndex = 0;
+          setSong(currentAlbum.songs[0]);
+          playSong(currentAlbum.songs[0]);
+        } else {
               var song = currentAlbum.songs[currentSongIndex];
               setSong(song);
               playSong(song);
