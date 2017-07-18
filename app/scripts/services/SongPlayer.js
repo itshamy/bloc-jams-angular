@@ -1,13 +1,14 @@
 (function(){
   function SongPlayer(){
     var SongPlayer = {};
-
     var currentSong = null;
+
     /**
     * @desc Buzz object audio file
     * @type {Object}
     */
     var currentBuzzObject = null;
+
     /**
     * @function setSong
     * @desc Stops currently playing song and loads new audio file as currentBuzzObject
@@ -24,19 +25,39 @@
       });
       currentSong = song;
     };
-//The play method takes an argument, song, which we'll get from the Album view when a user clicks the play button
-//the ngRepeat directive used in the Album view template will dictate which song to pass into the function
+
+    /**
+    * @function playSong
+    * @desc Play new audio file
+    * @param {Object} song
+    */
+    var playSong = function(song){
+      currentBuzzObject.play();
+      song.playing = true;
+    };
+
+
+    /**
+    * @method SongPlayer.play
+    * @desc Set and play a new song when a user clicks
+    * @param {Object} song
+    */
     SongPlayer.play = function(song){
         if (currentSong !== song){
           setSong(song);
-          currentBuzzObject.play();
-          song.playing = true;
+          playSong(song);
         } else if (currentSong === song){
             if (currentBuzzObject.isPaused()){
               currentBuzzObject.play();
             }
         }
       };
+
+      /**
+      * @method SongPlayer.pause
+      * @desc Stop current playing song when a user clicks
+      * @param {Object} song
+      */
       SongPlayer.pause = function(song){
           currentBuzzObject.pause();
           song.playing = false;
