@@ -1,9 +1,9 @@
 //define a controller for the Landing view
-(function)(){
+(function(){
   function LandingCtrl(){
     this.heroTitle = "Turn the Music Up";
   }
   angular
-    .module('blocJam')
+    .module('blocJams')
     .controller('LandingCtrl', LandingCtrl);
 })();
