@@ -82,6 +82,13 @@
         * @type {Number}
         */
         SongPlayer.currentTime = null;
+
+        /**
+        * @desc current volume of the currently playing song
+        * @type {number}
+        **/
+        SongPlayer.volume = 75;
+        SongPlayer.maxVolume = 100;
         /**
         * @function SongPlayer.play
         * @desc Sets or plays song if song is not equal to currently playing song and plays song if currently playing song is paused
@@ -160,6 +167,17 @@
                 currentBuzzObject.setTime(time);
             }
         };
+
+        /**
+        * @function setVolume
+        * @desc Set volume of currently playing song
+        * @param {Number} volume
+        */
+        SongPlayer.setVolume = function(volume) {
+           if (currentBuzzObject) {
+           currentBuzzObject.setVolume(volume);
+           }
+       };
 
         return SongPlayer;
     }
