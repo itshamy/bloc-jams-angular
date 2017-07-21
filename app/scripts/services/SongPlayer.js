@@ -41,12 +41,15 @@
             });
 
             currentBuzzObject.bind('timeupdate', function(){
-              $rootScope.$apply(function(){
+                $rootScope.$apply(function(){
                 SongPlayer.currentTime = currentBuzzObject.getTime();
-              });
+            });
+            });
 
-          });
-
+            currentBuzzObject.bind('ended', function() {
+            SongPlayer.autoPlay();
+            });
+  
             SongPlayer.currentSong = song;
         };
         /**
@@ -148,8 +151,10 @@
             var currentSongIndex = getSongIndex(SongPlayer.currentSong);
             currentSongIndex++;
 
-            if (currentSongIndex > currentAlbum.songs.length) {
-                stopSong(song);
+            if (currentSongIndex === currentAlbum.songs.length) {
+                stopSong(SongPlayer.currentSong);
+                setSong(currentAlbum.songs[0]);
+                playSong(currentAlbum.songs[0]);
             } else {
                 var song = currentAlbum.songs[currentSongIndex];
                 setSong(song);
@@ -178,6 +183,12 @@
            currentBuzzObject.setVolume(volume);
            }
        };
+
+       SongPlayer.autoPlay = function(song){
+            var currentSongIndex = getSongIndex(SongPlayer.currentSong);
+            setSong(currentAlbum.songs[currentSongIndex + 1]);
+            playSong(currentAlbum.songs[currentSongIndex + 1]);
+          };
 
         return SongPlayer;
     }
